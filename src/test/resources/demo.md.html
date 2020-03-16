@@ -1,0 +1,71 @@
+﻿<!doctype html public '-//W3C//DTD HTML 4.0 Transitional //EN'>
+<html>
+<head>
+<title>demo</title>
+<meta charset='UTF-8' />
+<meta name='generator' content='EverEdit' />
+<link href='D:\work\tools\text\Win\EverEdit\mode\markdown\default.css' rel='stylesheet'></link>
+<link href='D:\work\tools\text\Win\EverEdit\mode\markdown\prettify.css' rel='stylesheet'></link>
+<script type='text/javascript' src='D:\work\tools\text\Win\EverEdit\mode\markdown\prettify.js'></script>
+<script type='text/javascript' src='D:\work\tools\text\Win\EverEdit\mode\markdown\jquery-1.10.2.min.js'></script>
+<script type='text/javascript' src='D:\work\tools\text\Win\EverEdit\mode\markdown\toc.js'></script>
+</head>
+<body>
+<div id='generated-toc'></div>
+<pre><code class="sql">-- @namespace=com.rnkrsoft.litebatis.demo.mapper.DemoMapper</code></pre>
+
+<h1>用户信息</h1>
+
+<h2>增加用户信息</h2>
+
+<pre><code class="sql">-- 增加用户信息
+-- @type=insert
+-- @paramType=com.rnkrsoft.litebatis.demo.DemoEntity
+insert into demo(name, age, sex) value(#{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER})</code></pre>
+
+<h2>删除用户信息</h2>
+
+<pre><code class="sql">-- 删除用户信息
+-- @type=delete
+-- @id=deleteUserByPrimaryKey
+-- @paramType=int
+delete from demo where userid = #{value,jdbcType=INTEGER}</code></pre>
+
+<h2>修改用户信息</h2>
+
+<pre><code class="sql">-- 修改用户信息
+-- @type=update
+-- @id=updateUserByPrimaryKey
+-- @paramType=com.rnkrsoft.litebatis.demo.DemoEntity
+update demo set name=#{name,jdbcType=VARCHAR},age=#{age,jdbcType=INTEGER} where sex = #{sex,jdbcType=INTEGER}
+-- @if(sex &gt; 10)
+and sex = #{sex,jdbcType=INTEGER}
+-- @endif</code></pre>
+
+<h2>查询用户信息</h2>
+
+<pre><code class="sql">-- 用户信息
+-- @type=select
+-- @id=selectUser查询用户信息
+-- @resultType=com.rnkrsoft.litebatis.demo.DemoEntity
+-- @paramType=com.rnkrsoft.litebatis.demo.DemoEntity
+select username, age, sex 
+from demo 
+where username = #{username,jdbcType=VARCHAR} 
+and age &gt; #{age,jdbcType=INTEGER}
+-- @if(sex &gt; 0)
+and sex &gt; #{sex,jdbcType=INTEGER}
+-- @endif
+-- @if(address != null)
+and address = #{address,jdbcType=VARCHAR}
+-- @endif</code></pre>
+<script type='text/javascript'>
+$(document).ready(function(){
+  if($('code').length>0){
+    $('code').parent().addClass('prettyprint linenums');
+    prettyPrint();
+};
+});
+</script>
+</body>
+</html>
